@@ -14,6 +14,7 @@ jobs:
       postgres:
         image: postgres:15
         env:
+          DB_HOST: postgres
           POSTGRES_DB: task-db
           POSTGRES_USER: taskAdmin
           POSTGRES_PASSWORD: admin1234

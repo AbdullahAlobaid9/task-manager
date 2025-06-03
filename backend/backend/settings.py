@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from datetime import timedelta
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -101,11 +102,11 @@ AUTH_USER_MODEL = 'users.CustomUser'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "task-db",
-        "USER": "taskAdmin",
-        "PASSWORD": "admin1234",
-        "HOST": "postgres",
-        "PORT": "5432",
+        "NAME": os.getenv("POSTGRES_DB", "task-db"),
+        "USER": os.getenv("POSTGRES_USER", "taskAdmin"),
+        "PASSWORD": os.getenv("POSTGRES_PASSWORD", "admin1234"),
+        "HOST": os.getenv("DB_HOST", "postgres"),
+        "PORT": os.getenv("DB_PORT", "5432"),
     }
 }
 
