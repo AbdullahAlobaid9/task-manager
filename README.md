@@ -35,7 +35,7 @@ A full-stack task management platform with user authentication, task filtering, 
 ### 📁 1. Clone the repository
 
 ```bash
-git clone https://github.com/abdullahalobaid9/task-manager.git
+git clone https://github.com/AbdullahAlobaid9/task-manager.git
 cd task-manager
 ```
 
@@ -90,4 +90,4 @@ You can add Django test cases here in the future.
 ## 👨‍🔧 Author
 
 - Abdullah Alobaid
-- [GitHub](https://github.com/abdullahalobaid9)
+- [GitHub](https://github.com/AbdullahAlobaid9)
