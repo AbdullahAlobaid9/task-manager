@@ -1,0 +1,55 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    volumes:
+      - ./backend:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+      - redis
+    command: >
+      sh -c "
+        until pg_isready -h postgres -p 5432 -U taskAdmin; do
+          echo 'Waiting for PostgreSQL...';
+          sleep 5;
+        done &&
+        sleep 15 &&
+        python manage.py migrate &&
+        gunicorn backend.wsgi:application --bind 0.0.0.0:8000
+      "
+
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+  postgres:
+    image: postgres:15
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: task-db
+      POSTGRES_USER: taskAdmin
+      POSTGRES_PASSWORD: admin1234
+
+  redis:
+    image: redis:7
+
+  celery:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    command: celery -A backend worker --loglevel=info
+    depends_on:
+      - redis
+      - backend
+
+volumes:
+  pgdata:

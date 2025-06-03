@@ -1,0 +1,20 @@
+# Step 1: Build the React app
+FROM node:20 AS builder
+
+WORKDIR /app
+
+COPY ./frontend/package*.json ./
+RUN npm install
+
+COPY ./frontend ./
+RUN npm run build
+
+FROM node:20 AS runner
+
+RUN npm install -g serve
+
+WORKDIR /app
+COPY --from=builder /app/dist ./dist
+
+EXPOSE 3000
+CMD ["serve", "-s", "dist", "-l", "3000"]
