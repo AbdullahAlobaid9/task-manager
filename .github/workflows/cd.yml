@@ -1,0 +1,35 @@
+name: Deploy
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest # Replace with `self-hosted` when configured later on
+
+    strategy:
+      matrix:
+        nodes: ["your.server.ip.here"] # can have a list of ip's when having multiple instances/machines
+
+    steps:
+      - name: Deploy to ${{ matrix.nodes }}
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
+
+        run: |
+          echo "This is a deployment placeholder."
+
+          # Uncomment and adapt these lines when server is ready:
+          # mkdir -p ~/.ssh
+          # echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          # chmod 600 ~/.ssh/id_rsa
+          # ssh-keyscan -H ${{ matrix.nodes }} >> ~/.ssh/known_hosts
+
+          # ssh -i ~/.ssh/id_rsa $SSH_USERNAME@${{ matrix.nodes }} "
+          #     cd /task-manager &&
+          #     git pull origin main &&
+          #     docker compose down &&
+          #     docker compose up -d --build
+          # "
