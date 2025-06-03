@@ -1,0 +1,137 @@
+html[dir="ltr"] {
+  font-family: "Roboto", sans-serif;
+}
+
+html[dir="rtl"] {
+  font-family: "Tajawal", sans-serif;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+.customScrollContainerMain::-webkit-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #cbc7c7 #f1f1f1;
+  width: 8px;
+  height: 8px;
+}
+
+.customScrollContainerMain::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.customScrollContainerMain::-webkit-scrollbar-thumb {
+  background: #a0aec0;
+  border-radius: 80px;
+}
+
+.customScrollContainerMain::-webkit-scrollbar-thumb:hover {
+  background: #718096;
+}
+
+/* for dark mode */
+.customScrollContainerMainDark::-webkit-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #cbc7c7 #f1f1f1;
+  width: 8px;
+  height: 8px;
+}
+
+.customScrollContainerMainDark::-webkit-scrollbar-track {
+  background: #171729;
+}
+
+.customScrollContainerMainDark::-webkit-scrollbar-thumb {
+  background: #a0aec0;
+  border-radius: 80px;
+}
+
+.customScrollContainerMainDark::-webkit-scrollbar-thumb:hover {
+  background: #718096;
+}
+
+/* Scrollbar styles for the Sidebar component */
+.customScrollContainer::-webkit-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #cbc7c7 #f1f1f1;
+  width: 8px;
+  height: 8px;
+}
+
+.customScrollContainer::-webkit-scrollbar-track {
+  background: #171729;
+}
+
+.customScrollContainer::-webkit-scrollbar-thumb {
+  background: #a0aec0;
+  border-radius: 80px;
+}
+
+.customScrollContainer::-webkit-scrollbar-thumb:hover {
+  background: #718096;
+}
+
+.loader {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin-top: 10px;
+}
+
+.loader:before,
+.loader:after {
+  content: "";
+  border-radius: 50%;
+  position: absolute;
+  inset: 0;
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.3) inset;
+}
+.loader:after {
+  box-shadow: 0 5px 0 #5436da8e inset;
+  animation: rotate 2s linear infinite;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  list-style-type: none;
+}
+.pagination .page-item {
+  color: #616871;
+  opacity: 0.5;
+  margin-inline: 12px;
+}
+
+.pagination .active_page,
+.navigate {
+  opacity: 1;
+}
+
+.activeClassName a {
+  background-color: #eaf4ff;
+  color: #1ba3ef;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  -o-transition: 0.3s;
+}
+
+.selectStyle {
+  background-color: rgb(229 231 235) !important;
+}
+
+.selectStyle:hover {
+  background-color: rgb(209 213 219) !important;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

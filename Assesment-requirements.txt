@@ -1,0 +1,62 @@
+Project Requirements Features:
+
+User Authentication:
+
+    Implement user registration and login functionality.
+    Use JWT for secure authentication.
+
+
+Task Management:
+
+    Users can create, edit, delete, and view tasks.
+    Tasks should have a title, description, priority, and status (e.g., pending, in-progress, completed).
+    Support filtering tasks by priority or status.
+
+
+API Design:
+
+    Expose RESTful APIs for all operations (e.g., user registration, login, task CRUD).
+
+
+Technical Requirements
+
+    Use a language and framework of choice like Python with Django or Node.js with Express.
+    Provide clean, modular, and well-documented code.
+    Frontend
+
+    Develop a simple UI using React, Vue.js, or Even vanilla javascript.
+    Implement forms for authentication and task management.
+
+
+Database:
+
+    Use any relational database (e.g., PostgreSQL or MySQL).
+    Include a basic schema for user and task data.
+
+
+DevOps:
+
+    Use Docker to containerize the application.
+    Provide docker-compose.yml for setting up the environment.
+
+
+System Design Requirement
+
+    Submit a System Design Document. (PDF or Markdown)
+    Submit a Database ERD. (PDF or Markdown)
+
+
+Advanced/Optional Features (Bonus Points)
+
+    Implement a search feature for tasks (e.g., based on title or description).
+    Use a messaging queue for background task processing (Sending task notifications).
+    Add a CI/CD pipeline using GitHub Actions.
+
+
+Deliverables
+
+    Fully working code hosted on a public GitHub repository.
+    A README.md with project setup instructions and any assumptions made.
+    The system design document (PDF or Markdown).
+    Docker setup for running the project locally.
+    To be completed and provided within 48 hours
