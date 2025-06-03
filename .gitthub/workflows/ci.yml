@@ -1,0 +1,59 @@
+name: CI - Django & React
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_DB: task-db
+          POSTGRES_USER: taskAdmin
+          POSTGRES_PASSWORD: admin1234
+        ports: [5432:5432]
+        options: >-
+          --health-cmd "pg_isready -U taskAdmin"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    env:
+      DJANGO_SETTINGS_MODULE: backend.settings
+      DATABASE_URL: postgres://taskAdmin:admin1234@localhost:5432/task-db
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install backend dependencies
+        run: |
+          pip install -r backend/requirements.txt
+
+      - name: Run Django checks
+        run: |
+          cd backend
+          python manage.py migrate
+          python manage.py check
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20"
+
+      - name: Install frontend dependencies
+        run: |
+          cd frontend
+          npm install
+          npm run build
